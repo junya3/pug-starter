@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "watch:pug": "pug src/public/ -w -o dist/ --basedir src/include",
+    "watch:pug": "pug src/public/ -w -o dist/ --basedir src",
     "watch:scss": "sass --watch src/public/assets/style:dist/assets/style --load-path=src/include",
     "watch:ts": "tsc --watch",
     "serve": "live-server dist --port=8080 --open",

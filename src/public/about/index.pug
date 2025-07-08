@@ -1,0 +1,12 @@
+extends /include/pug/layout/_layout
+
+include /include/pug/component/_page-title
+
+block prepend title 
+  - const pageTitle = "top"
+
+block content 
+  +page-title(title)
+  section 
+    h2.sec-title サンプルページです。
+    a(href="/") 戻る
