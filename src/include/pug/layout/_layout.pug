@@ -9,7 +9,7 @@ html(lang="ja")
     //- ----------------------------
 
     block title 
-      - const title = "pug template"
+      - const title = "pug starter"
       if pageTitle
         title #{pageTitle} | #{title}
       else 
@@ -20,7 +20,7 @@ html(lang="ja")
     //- ----------------------------
 
     block style
-      link(rel="stylesheet", href="assets/style/common.css")
+      link(rel="stylesheet", href="assets/style/main.css")
 
     //- ----------------------------
     //- scirpt
@@ -29,8 +29,9 @@ html(lang="ja")
     block script
       script(type="module" src="assets/js/main.js")
 
+  //- ----------------------------
+  //- main content
+  //- ----------------------------
   body 
-    //- ----------------------------
-    //- main content
-    //- ----------------------------
-    block content
+    .container.graph
+      block content

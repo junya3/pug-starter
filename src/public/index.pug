@@ -1,4 +1,11 @@
-extends ../include/pug/layout/layout
+extends ../include/pug/layout/_layout
+
+include ../include/pug/component/_page-title
+
+block prepend title 
+  - const pageTitle = "top"
 
 block content 
-  h2 かわったね
+  +page-title(title)
+  p pugコンポーネント読み込み：#[code include ../include/pug/_filename]
+  p scssコンポーネント読み込み：#[code @use 'style' as *;]
