@@ -14,7 +14,7 @@
     "verbatimModuleSyntax": true,
     "moduleDetection": "force",
     "outDir": "dist/assets/js", // output.js
-    "rootDir": "src/public/assets/js", // input.ts
+    "rootDir": "src/app/assets/js", // input.ts
 
     // "allowImportingTsExtensions": true,
     // "noEmit": true,
