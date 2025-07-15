@@ -9,13 +9,25 @@
     "watch:ts": "tsc --watch",
     "copy:images": "copyfiles -u 1 public/assets/image/** dist",
     "serve": "live-server dist --port=8080 --open",
-    "watch": "concurrently \"npm run watch:pug\" \"npm run watch:scss\" \"npm run watch:ts\" \"npm run copy:images\" \"npm run serve\""
+    "watch": "concurrently \"npm run watch:pug\" \"npm run watch:scss\" \"npm run watch:ts\" \"npm run copy:images\" \"npm run serve\"",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.pug": "prettier --write --plugin=@prettier/plugin-pug",
+    "*.{js,ts,css,scss,md,json,yaml,yml}": "prettier --write"
   },
   "devDependencies": {
+    "@prettier/plugin-pug": "^3.4.0",
     "concurrently": "^9.2.0",
     "copyfiles": "^2.4.1",
+    "git-format-staged": "^3.1.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.2",
     "live-server": "^1.2.2",
+    "prettier": "3.6.2",
+    "pretty-quick": "^4.2.2",
     "sass": "^1.89.2",
+    "simple-git-hooks": "^2.13.0",
     "typescript": "~5.8.3",
     "vite": "^7.0.3"
   }

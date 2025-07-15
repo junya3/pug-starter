@@ -2,12 +2,16 @@ extends /component/pug/layout/_layout
 
 include /component/pug/ui/_page-title
 
-block prepend title 
-  - const pageTitle = "top"
+block prepend title
+  - const pageTitle = "top";
 
-block content 
+block content
   +page-title(title)
-  section 
+  section
     h2.sec-title サンプルページです。
-    img(src='/assets/image/sample.png' alt='' style='display:block; margin-bottom: 1rem;')
+    img(
+      src="/assets/image/sample.png",
+      alt="",
+      style="display: block; margin-bottom: 1rem"
+    )
     a(href="/") 戻る
