@@ -1,6 +1,14 @@
 {
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // 保存時フォーマット有効
+  // "files.associations": {
+  //   "*.pug": "pug"
+  //   // defalut
+  //   // "*.pug": "jade"
+  // },
+
   "[pug]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
