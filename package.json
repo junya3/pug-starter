@@ -17,6 +17,7 @@
     "*.{js,css,md}": "prettier --write"
   },
   "devDependencies": {
+    "@prettier/plugin-pug": "^3.4.0",
     "concurrently": "^9.2.0",
     "copyfiles": "^2.4.1",
     "git-format-staged": "^3.1.1",
