@@ -2,21 +2,22 @@ extends /component/pug/layout/_layout
 
 include /component/pug/ui/_page-title
 
-block prepend title 
-  - const pageTitle = "top"
+block prepend title
+  - const pageTitle = "top";
 
-block content 
+block content
   +page-title(title)
-  section 
+  section
     h2.sec-title コンポーネント読み込み
     p pug：#[code include /component/pug/_filename]
     p 下層ページもルートパスで指定してください。
-      a(href='/about/') サンプル
+      a(href="/about/") サンプル
     p scss：#[code @use 'style/_global/g-mixin' as *;]など
 
     p image：#[code img(src='/assets/image/sample.png' alt='')]
-  section 
+  section
     h2.sec-title 使い方
+
     p #[code src/app]にページの管理、#[code src/component]にコンポーネントの管理をしてください。
     p 開発時には#[code npm run watch]を使用してください。
     p #[code pug],#[code scss],#[code typescript]を監視しながらlive-serverを立ち上げることで擬似的にホットリロードを実現しています。

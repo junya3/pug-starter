@@ -8,13 +8,13 @@ html(lang="ja")
     //- title
     //- ----------------------------
 
-    block title 
-      - const title = "pug starter"
+    block title
+      - const title = "pug starter";
       if pageTitle
-        title #{pageTitle} | #{title}
-      else 
-        title #{title}
-    
+        title #{ pageTitle } | #{ title }
+      else
+        title #{ title }
+
     //- ----------------------------
     //- style
     //- ----------------------------
@@ -27,11 +27,11 @@ html(lang="ja")
     //- ----------------------------
 
     block script
-      script(type="module" src="/assets/js/main.js")
+      script(type="module", src="/assets/js/main.js")
 
   //- ----------------------------
   //- main content
   //- ----------------------------
-  body 
+  body
     .container.graph
       block content
