@@ -13,8 +13,8 @@
     "prepare": "husky"
   },
   "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown",
-    "*.{js,css,md}": "prettier --write"
+    "*.pug": "prettier --write --plugin=@prettier/plugin-pug",
+    "*.{js,ts,css,scss,md,json,yaml,yml}": "prettier --write"
   },
   "devDependencies": {
     "@prettier/plugin-pug": "^3.4.0",
