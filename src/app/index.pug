@@ -12,8 +12,12 @@ block content
     p pug：#[code include /component/pug/_filename]
     p 下層ページもルートパスで指定してください。
       a(href="/about/") サンプル
+    p #[code /app]内のものであればすべてそのままコンパイルされます。コンポーネントは#[code /component]に格納してください。
+    br
     p scss：#[code @use 'style/_global/g-mixin' as *;]など
+    br
     p image：#[code img(src='/assets/image/sample.png' alt='')]
+    p 画像は`/public/assets/image`で管理してください。
 
   section
     h2.sec-title 使い方
