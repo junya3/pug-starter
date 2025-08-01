@@ -7,7 +7,7 @@
     "watch:pug": "pug src/app/ -w -o dist/ --basedir src",
     "watch:scss": "sass --watch src/app/assets/style:dist/assets/style --load-path=src/component",
     "watch:ts": "tsc --watch",
-    "copy:images": "copyfiles -u 1 public/assets/image/** dist",
+    "copy:images": "copyfiles -u 1 \"public/assets/image/**/*\" dist",
     "serve": "live-server dist --port=8080 --open",
     "watch": "concurrently \"npm run watch:pug\" \"npm run watch:scss\" \"npm run watch:ts\" \"npm run copy:images\" \"npm run serve\"",
     "prepare": "husky"
