@@ -5,6 +5,14 @@ html(lang="ja")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
 
     //- ----------------------------
+    //- base
+    //- ----------------------------
+
+    block base
+      -
+        const basePath = '/pug_starter/dist'
+
+    //- ----------------------------
     //- title
     //- ----------------------------
 
@@ -20,14 +28,14 @@ html(lang="ja")
     //- ----------------------------
 
     block style
-      link(rel="stylesheet", href="/assets/style/main.css")
+      link(rel="stylesheet", href=`${basePath}/assets/style/main.css`)
 
     //- ----------------------------
     //- scirpt
     //- ----------------------------
 
     block script
-      script(type="module", src="/assets/js/main.js")
+      script(type="module", src=`${basePath}/assets/js/main.js`)
 
   //- ----------------------------
   //- main content

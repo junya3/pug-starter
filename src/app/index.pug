@@ -23,10 +23,10 @@ block content
     h2.sec-title コンポーネントの読み込み方法
     p Pugファイル内でコンポーネントを読み込む場合は以下のように記述します。
     p #[code include /component/pug/_filename]
-    p 下層ページもルートパス（/）から指定してください。
-      a(href="/about/") サンプルページはこちら
+    p 下層ページもルートパス（`${basePath}`）から指定してください。
+      a(href=`${basePath}about/`) サンプルページはこちら
 
-    p #[code /app] 内のファイルは全てコンパイル対象です。
+    p #[code /app] 内のファイルはすべてコンパイル対象です。
       | 再利用するUIパーツやレイアウトは #[code /component] に格納してください。
 
     br
@@ -36,7 +36,7 @@ block content
     br
 
     p 画像の読み込み例：
-      | #[code img(src='/assets/image/sample.png' alt='説明文')]
+      | #[code img(src=`${basePath}assets/image/sample.png` alt='説明文')]
     p 画像ファイルは #[code /public/assets/image] で管理してください。
 
   //- =============================
