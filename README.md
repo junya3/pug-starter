@@ -1,24 +1,116 @@
-## Pug Starter
+# Pug Starter Debug
 
-### 概要
+このプロジェクトは、Pug + SCSS + TypeScript を使ったサブディレクトリ対応テンプレートです。
 
-`pug`, `scss`, `typescript`で開発する機会が増えたので、使いやすいようにテンプレートを作成してみました。
+## フォルダ構成例
 
-### 使い方
+```
+project-root/
+├─ src/
+│  ├─ app/          # ページ管理
+│  └─ component/    # コンポーネント管理
+├─ public/
+│  └─ assets/       # 画像、CSS、JS
+└─ dist/            # コンパイル後出力
+```
 
-1. `npm i`を実行し、環境をインストールしてください。
-1. 開発は`/src`で行い、`/src/app`には静的ファイルを、`/src/component`にはテンプレート等を格納しましょう。
-1. 画像は`/public`に格納しましょう。`/public/**`でも管理ができます。
-1. `npm run watch`とすると自動的に`/dist`にコンパイルされ、同時に Live Server を立ち上げ、擬似的なホットリロードを実現しています。
-1. 必要に応じてファイルを書き換えてください。
+## basePath について
 
-### 注意点
+- GitHub Pages やサブディレクトリで公開する場合、HTML やリンクのルートを統一するためのパスです。
+- 例: `https://username.github.io/pug_starter_debug/`
+- すべてのリンクや画像、CSS/JS のパスを `${basePath}/...` で指定します。
+- **layout.pug に定義**しておけば、子ページ側で再定義する必要はありません。
+- 注意点:
+  - basePath の値を変更すると、すべてのリンク・画像・CSS/JS パスが影響を受けます。
+  - 子ページで同じ変数名を定義すると、layout の basePath が上書きされます。
+  - ページ内アンカー（例: `#section`）には影響しません。
 
-- style の開発は`component`内で管理し、`main.scss`はいじらないようにしましょう。
-- `pug`のコード整形ツールは`commit`時に動作します。
-- 保存時に動作させたい場合は`.vscode/settings.json`から該当する箇所のコメントアウトを解除してください。
+## コンパイル後の出力例
 
-### 開発者向け
+```
+dist/
+├─ index.html       # トップページ
+├─ about/
+│  └─ index.html    # 下層ページ
+└─ assets/
+   ├─ style/main.css
+   ├─ js/main.js
+   └─ image/sample.png
+```
 
-`package.json`に殆ど書いてあります。
-必要に応じて書き換えてください。
+## 使い方
+
+### ページ管理
+
+- `src/app` にページを管理
+- `src/component` にコンポーネントを管理
+- 開発時には以下を使用：
+
+  ```bash
+  npm run watch
+  ```
+
+  - pug、scss、typescript を監視し、擬似的にホットリロード
+  - 対象を制限したい場合：
+
+    ```bash
+    npm run watch:pug
+    ```
+
+- 通常の監視でも `dist` にコピーされます
+- 画像のみを dist に格納する場合：
+
+  ```bash
+  npm run copy:images
+  ```
+
+- 単独で live-server を立てる場合：
+
+  ```bash
+  npm run serve
+  ```
+
+### リンクや画像、CSS/JS の書き方
+
+- CSS/JS は basePath を使って統一：
+
+  ```pug
+  link(rel="stylesheet", href=`${basePath}assets/style/main.css`)
+  script(type="module", src=`${basePath}assets/js/main.js`)
+  ```
+
+- 下層ページリンクや画像も basePath を使用：
+
+  ```pug
+  a(href=`${basePath}about/`) Aboutページ
+  img(src=`${basePath}assets/image/sample.png`, alt="サンプル")
+  ```
+
+- これにより、サブディレクトリ配下での 404 を防ぎ、すべてのリソースを統一的に管理できます。
+
+### ページタイトルの追加
+
+- layout で定義されたタイトルブロックに追加する場合：
+
+  ```pug
+  block prepend title
+    - const pageTitle = "トップページ";
+  ```
+
+- 前に追加したい場合は `prepend`、後ろに追加したい場合は `append` を使用
+- HTML 出力例:
+
+  ```html
+  <title>FlowSync | トップページ</title>
+  ```
+
+## 注意点
+
+- basePath を間違えるとリンク切れや 404 になります。
+- 子ページで同名変数を定義すると layout の変数が上書きされます。
+- ページ内アンカー（例: `#section`）は basePath の影響を受けません。
+
+## Tips
+
+- layout に basePath を定義しておくと、全ページでリンク管理が簡単になります。
+- 子ページでページタイトルを追加する際は `block prepend title` または `block append title` を使い分けましょう。
