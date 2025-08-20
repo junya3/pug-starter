@@ -1,4 +1,4 @@
-# Pug Starter Debug
+# Pug Starter
 
 このプロジェクトは、Pug + SCSS + TypeScript を使ったサブディレクトリ対応テンプレートです。
 
@@ -58,6 +58,7 @@ dist/
     ```
 
 - 通常の監視でも `dist` にコピーされます
+- 必要に応じて`dist`を追跡対象から外してください
 - 画像のみを dist に格納する場合：
 
   ```bash

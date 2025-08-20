@@ -1,0 +1,11 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>トップページ | pug starter</title><link rel="stylesheet" href="/pug-starter/dist/assets/style/main.css"><script type="module" src="/pug-starter/dist/assets/js/main.js"></script></head><body><div class="container graph"><h1 class="page-title">pug starter</h1><section><h2 class="sec-title">コンポーネントの読み込み方法</h2><p>Pugファイル内でコンポーネントを読み込む場合は以下のように記述します。</p><p><code>include /component/pug/_filename</code></p><p>下層ページもルートパス（`${basePath}`）から指定してください。<a href="/pug-starter/distabout/">サンプルページはこちら</a></p><p><code>/app</code> 内のファイルはすべてコンパイル対象です。再利用するUIパーツやレイアウトは <code>/component</code> に格納してください。</p><br><p>SCSSの読み込み例：<code>@use 'style/_global/g-mixin' as *;</code></p><br><p>画像の読み込み例：<code>img(src=`${basePath}assets/image/sample.png` alt='説明文')</code></p><p>画像ファイルは <code>/public/assets/image</code> で管理してください。</p></section><section><h2 class="sec-title">開発ワークフロー</h2><p>ページファイルは <code>src/app</code> に、コンポーネントは <code>src/component</code> に格納してください。</p><ul><li>開発時は <code>npm run watch</code> を実行します。</li><li><code>pug</code>, <code>scss</code>, <code>typescript</code> を監視しながら live-server を起動し、擬似的なホットリロードを実現します。</li><li>監視対象を限定する場合：<code>npm run watch:pug</code> や <code>npm run watch:scss</code> などを使用</li><li>画像のみを <code>dist</code> にコピーする場合：<code>npm run copy:images</code></li><li>単独で live-server を立ち上げる場合：<code>npm run serve</code></li></ul><p>コンパイルされた成果物はすべて <code>dist</code> に出力されます。</p><p>サーバーへアップロードする際は <code>dist</code> ディレクトリ内のファイルを使用してください。</p></section><section><h2 class="sec-title">ディレクトリ構成例</h2><pre>project-root/
+├─ src/
+│ ├─ app/ # 各ページファイル（.pug）
+│ ├─ component/ # 再利用可能なUIパーツ
+│ ├─ style/ # SCSSファイル
+│ └─ ts/ # TypeScriptファイル
+├─ public/
+│ └─ assets/image/ # 画像素材
+├─ dist/ # コンパイル済みファイル
+├─ package.json
+└─ README.md</pre></section><section><h2 class="sec-title">開発のコツ</h2><ul><li>コンポーネントは小さく分割して再利用性を高める</li><li>SCSSはBEMやユーティリティクラスで構造を統一する</li><li>TypeScriptはstrictモードで型安全性を保つ</li><li>画像は最適化（圧縮）してパフォーマンスを確保する</li></ul></section></div></body></html>
