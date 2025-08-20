@@ -12,6 +12,9 @@ p {
 section {
   margin-bottom: 1rem;
 }
+li {
+  font-size: 0.875rem;
+}
 
 // ----------------------------
 // layout
@@ -27,7 +30,8 @@ section {
   border-radius: 1rem;
 }
 :has(.graph) {
-  background-image: linear-gradient(0deg, #0000 calc(100% - 1px), #f0f0f0 0),
+  background-image:
+    linear-gradient(0deg, #0000 calc(100% - 1px), #f0f0f0 0),
     linear-gradient(90deg, #0000 calc(100% - 1px), #f0f0f0 0);
   background-size: 16px 16px;
 }

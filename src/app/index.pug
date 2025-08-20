@@ -1,31 +1,92 @@
+//- ========================================
+//- 基本レイアウトの読み込み
+//- ========================================
 extends /component/pug/layout/_layout
 
+//- ページタイトルUIコンポーネント
 include /component/pug/ui/_page-title
 
+//- タイトル設定
 block prepend title
-  - const pageTitle = "top";
+  - const pageTitle = "トップページ";
 
+//- ========================================
+//- ページコンテンツ
+//- ========================================
 block content
+  //- =============================
+  //- コンポーネント読み込み例
+  //- =============================
   +page-title(title)
-  section
-    h2.sec-title コンポーネント読み込み
-    p pug：#[code include /component/pug/_filename]
-    p 下層ページもルートパスで指定してください。
-      a(href="/about/") サンプル
-    p #[code /app]内のものであればすべてそのままコンパイルされます。コンポーネントは#[code /component]に格納してください。
-    br
-    p scss：#[code @use 'style/_global/g-mixin' as *;]など
-    br
-    p image：#[code img(src='/assets/image/sample.png' alt='')]
-    p 画像は`/public/assets/image`で管理してください。
 
   section
-    h2.sec-title 使い方
+    h2.sec-title コンポーネントの読み込み方法
+    p Pugファイル内でコンポーネントを読み込む場合は以下のように記述します。
+    p #[code include /component/pug/_filename]
+    p 下層ページもルートパス（/）から指定してください。
+      a(href="/about/") サンプルページはこちら
 
-    p #[code src/app]にページの管理、#[code src/component]にコンポーネントの管理をしてください。
-    p 開発時には#[code npm run watch]を使用してください。
-    p #[code pug],#[code scss],#[code typescript]を監視しながらlive-serverを立ち上げることで擬似的にホットリロードを実現しています。
-    p 監視する対象を#[code npm run watch:pug]など、対象を制限することもできます。
-    p 通常の監視でも#[code dist]にコピーされますが、画像のみをdistに格納する場合は#[code npm run copy:images]としてください。
-    p 単独でlive-serverを立てる場合は#[code npm run serve]を使用してください。
-    p コンパイルされたものはdistの中に格納されます。サーバーに上げる際はそちらをご利用ください。
+    p #[code /app] 内のファイルは全てコンパイル対象です。
+      | 再利用するUIパーツやレイアウトは #[code /component] に格納してください。
+
+    br
+
+    p SCSSの読み込み例：
+      | #[code @use 'style/_global/g-mixin' as *;]
+    br
+
+    p 画像の読み込み例：
+      | #[code img(src='/assets/image/sample.png' alt='説明文')]
+    p 画像ファイルは #[code /public/assets/image] で管理してください。
+
+  //- =============================
+  //- 開発の進め方
+  //- =============================
+  section
+    h2.sec-title 開発ワークフロー
+
+    p ページファイルは #[code src/app] に、
+      | コンポーネントは #[code src/component] に格納してください。
+
+    ul
+      li 開発時は #[code npm run watch] を実行します。
+      li #[code pug], #[code scss], #[code typescript] を監視しながら live-server を起動し、
+        | 擬似的なホットリロードを実現します。
+      li 監視対象を限定する場合：
+        | #[code npm run watch:pug] や #[code npm run watch:scss] などを使用
+      li 画像のみを #[code dist] にコピーする場合：
+        | #[code npm run copy:images]
+      li 単独で live-server を立ち上げる場合：
+        | #[code npm run serve]
+
+    p コンパイルされた成果物はすべて #[code dist] に出力されます。
+    p サーバーへアップロードする際は #[code dist] ディレクトリ内のファイルを使用してください。
+
+  //- =============================
+  //- プロジェクト構成
+  //- =============================
+  section
+    h2.sec-title ディレクトリ構成例
+    pre
+      | project-root/
+      | ├─ src/
+      | │ ├─ app/ # 各ページファイル（.pug）
+      | │ ├─ component/ # 再利用可能なUIパーツ
+      | │ ├─ style/ # SCSSファイル
+      | │ └─ ts/ # TypeScriptファイル
+      | ├─ public/
+      | │ └─ assets/image/ # 画像素材
+      | ├─ dist/ # コンパイル済みファイル
+      | ├─ package.json
+      | └─ README.md
+
+  //- =============================
+  //- ヒント
+  //- =============================
+  section
+    h2.sec-title 開発のコツ
+    ul
+      li コンポーネントは小さく分割して再利用性を高める
+      li SCSSはBEMやユーティリティクラスで構造を統一する
+      li TypeScriptはstrictモードで型安全性を保つ
+      li 画像は最適化（圧縮）してパフォーマンスを確保する
